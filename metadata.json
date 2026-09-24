@@ -1,0 +1,6 @@
+{
+  "name": "Language Detection System - NLP & Machine Learning",
+  "description": "Production-grade language detection system using Character-Level TF-IDF and Logistic Regression ML classifier across 15+ world languages with real-time confidence scores and alternative rankings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

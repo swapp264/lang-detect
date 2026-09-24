@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Detector — Machine Learning & NLP</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">🌐</span>
+        <div class="brand-text">
+          <h1>Language Detection System</h1>
+          <p class="subtitle">NLP & Machine Learning Classifier</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge">TF-IDF Char n-grams</span>
+        <span class="badge">Logistic Regression</span>
+        <span class="badge status-badge" id="system-status">Checking API...</span>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Input Panel -->
+      <section class="card input-card">
+        <div class="card-header">
+          <label for="text-input" class="label-title">Input Text</label>
+          <div class="char-counter"><span id="char-count">0</span> characters</div>
+        </div>
+
+        <div class="textarea-wrapper">
+          <textarea 
+            id="text-input" 
+            placeholder="Type or paste any text in English, Hindi, Marathi, French, German, Spanish, Arabic, Chinese, Japanese, Russian..." 
+            rows="6"
+            spellcheck="false"
+          ></textarea>
+        </div>
+
+        <!-- Sample Quick Pills -->
+        <div class="samples-wrapper">
+          <span class="samples-label">Quick test samples:</span>
+          <div class="sample-buttons">
+            <button type="button" class="sample-btn" data-text="Hello, how are you today? Hope you have a wonderful morning.">English</button>
+            <button type="button" class="sample-btn" data-text="नमस्ते, आप कैसे हैं? आज का मौसम बहुत सुहावना है।">Hindi</button>
+            <button type="button" class="sample-btn" data-text="नमस्कार, तुम्ही कसे आहात? हे एक सुंदर शहर आहे.">Marathi</button>
+            <button type="button" class="sample-btn" data-text="Bonjour, comment allez-vous aujourd'hui?">French</button>
+            <button type="button" class="sample-btn" data-text="Hola, ¿cómo estás hoy? Muchas gracias por tu ayuda.">Spanish</button>
+            <button type="button" class="sample-btn" data-text="Guten Tag, wie geht es Ihnen heute?">German</button>
+            <button type="button" class="sample-btn" data-text="مرحبا، كيف حالك اليوم؟ شكرا جزيلا لك.">Arabic</button>
+            <button type="button" class="sample-btn" data-text="你好，今天天气怎么样？非常感谢你的帮助！">Chinese</button>
+            <button type="button" class="sample-btn" data-text="こんにちは、お元気ですか？ありがとうございます。">Japanese</button>
+            <button type="button" class="sample-btn" data-text="Привет, как твои дела сегодня?">Russian</button>
+          </div>
+        </div>
+
+        <div class="actions-bar">
+          <button type="button" id="clear-btn" class="btn btn-secondary">Clear</button>
+          <button type="button" id="detect-btn" class="btn btn-primary">
+            <span class="btn-spinner" id="btn-spinner" style="display: none;"></span>
+            <span id="btn-text">Detect Language</span>
+          </button>
+        </div>
+
+        <div id="error-message" class="error-banner" style="display: none;"></div>
+      </section>
+
+      <!-- Output Panel -->
+      <section class="card result-card" id="result-card" style="display: none;">
+        <div class="card-header">
+          <span class="label-title">Detection Result</span>
+          <span class="script-badge" id="detected-script">Latin Script</span>
+        </div>
+
+        <div class="primary-result">
+          <div class="flag-avatar" id="result-flag">🌐</div>
+          <div class="result-details">
+            <div class="result-name-row">
+              <h2 id="result-language">English</h2>
+              <span class="native-name" id="result-native">(English)</span>
+            </div>
+            <div class="meta-row">
+              <span>Code: <strong id="result-code">en</strong></span>
+              <span>·</span>
+              <span id="result-family">Indo-European</span>
+            </div>
+          </div>
+          <div class="confidence-pill">
+            <div class="conf-value" id="result-confidence">98.7%</div>
+            <div class="conf-label">Confidence</div>
+          </div>
+        </div>
+
+        <!-- Progress bar for confidence -->
+        <div class="confidence-bar-bg">
+          <div class="confidence-bar-fill" id="confidence-bar" style="width: 98.7%;"></div>
+        </div>
+
+        <!-- Alternative Languages -->
+        <div class="alternatives-section">
+          <h3 class="section-title">Alternative Predictions</h3>
+          <div class="alternatives-list" id="alternatives-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Model Specs & Languages -->
+      <section class="card info-card">
+        <div class="card-header">
+          <span class="label-title">Supported Languages (15)</span>
+          <span class="info-note">Trained with Character n-grams (2-5)</span>
+        </div>
+        <div class="languages-grid" id="languages-grid">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>NLP Language Detection System · TF-IDF Character Vectorizer + Multinomial Logistic Regression · Production-Ready ML Portfolio Project</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+{
+  "model_type": "Logistic Regression + Character TF-IDF Pipeline",
+  "training_timestamp": "2026-09-24 15:58:42 UTC",
+  "elapsed_seconds": 3.26,
+  "total_samples": 1500,
+  "train_samples": 1200,
+  "test_samples": 300,
+  "vocabulary_size": 27646,
+  "ngram_range": [
+    2,
+    5
+  ],
+  "analyzer": "char",
+  "supported_languages": [
+    "Arabic",
+    "Chinese",
+    "Dutch",
+    "English",
+    "French",
+    "German",
+    "Hindi",
+    "Italian",
+    "Japanese",
+    "Korean",
+    "Marathi",
+    "Portuguese",
+    "Russian",
+    "Spanish",
+    "Turkish"
+  ],
+  "language_count": 15,
+  "metrics": {
+    "accuracy": 0.99,
+    "precision_macro": 0.9902,
+    "recall_macro": 0.99,
+    "f1_macro": 0.99,
+    "precision_weighted": 0.9902,
+    "recall_weighted": 0.99,
+    "f1_weighted": 0.99
+  },
+  "per_class_metrics": {
+    "Arabic": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Chinese": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Dutch": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "English": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "French": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "German": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Hindi": {
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1_score": 0.9744,
+      "support": 20.0
+    },
+    "Italian": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Japanese": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Korean": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Marathi": {
+      "precision": 0.9524,
+      "recall": 1.0,
+      "f1_score": 0.9756,
+      "support": 20.0
+    },
+    "Portuguese": {
+      "precision": 0.95,
+      "recall": 0.95,
+      "f1_score": 0.95,
+      "support": 20.0
+    },
+    "Russian": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    },
+    "Spanish": {
+      "precision": 0.95,
+      "recall": 0.95,
+      "f1_score": 0.95,
+      "support": 20.0
+    },
+    "Turkish": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 20.0
+    }
+  },
+  "languages_info": {
+    "Arabic": {
+      "code": "ar",
+      "flag": "🇸🇦",
+      "native": "العربية",
+      "script": "Arabic",
+      "family": "Afroasiatic / Semitic"
+    },
+    "Chinese": {
+      "code": "zh",
+      "flag": "🇨🇳",
+      "native": "中文",
+      "script": "Hanzi (Simplified/Traditional)",
+      "family": "Sino-Tibetan"
+    },
+    "Dutch": {
+      "code": "nl",
+      "flag": "🇳🇱",
+      "native": "Nederlands",
+      "script": "Latin",
+      "family": "Indo-European / Germanic"
+    },
+    "English": {
+      "code": "en",
+      "flag": "🇬🇧",
+      "native": "English",
+      "script": "Latin",
+      "family": "Indo-European / Germanic"
+    },
+    "French": {
+      "code": "fr",
+      "flag": "🇫🇷",
+      "native": "Français",
+      "script": "Latin",
+      "family": "Indo-European / Romance"
+    },
+    "German": {
+      "code": "de",
+      "flag": "🇩🇪",
+      "native": "Deutsch",
+      "script": "Latin",
+      "family": "Indo-European / Germanic"
+    },
+    "Hindi": {
+      "code": "hi",
+      "flag": "🇮🇳",
+      "native": "हिन्दी",
+      "script": "Devanagari",
+      "family": "Indo-European / Indo-Aryan"
+    },
+    "Italian": {
+      "code": "it",
+      "flag": "🇮🇹",
+      "native": "Italiano",
+      "script": "Latin",
+      "family": "Indo-European / Romance"
+    },
+    "Japanese": {
+      "code": "ja",
+      "flag": "🇯🇵",
+      "native": "日本語",
+      "script": "Kanji + Kana",
+      "family": "Japonic"
+    },
+    "Korean": {
+      "code": "ko",
+      "flag": "🇰🇷",
+      "native": "한국어",
+      "script": "Hangul",
+      "family": "Koreanic"
+    },
+    "Marathi": {
+      "code": "mr",
+      "flag": "🇮🇳",
+      "native": "मराठी",
+      "script": "Devanagari",
+      "family": "Indo-European / Indo-Aryan"
+    },
+    "Portuguese": {
+      "code": "pt",
+      "flag": "🇵🇹",
+      "native": "Português",
+      "script": "Latin",
+      "family": "Indo-European / Romance"
+    },
+    "Russian": {
+      "code": "ru",
+      "flag": "🇷🇺",
+      "native": "Русский",
+      "script": "Cyrillic",
+      "family": "Indo-European / Slavic"
+    },
+    "Spanish": {
+      "code": "es",
+      "flag": "🇪🇸",
+      "native": "Español",
+      "script": "Latin",
+      "family": "Indo-European / Romance"
+    },
+    "Turkish": {
+      "code": "tr",
+      "flag": "🇹🇷",
+      "native": "Türkçe",
+      "script": "Latin (Extended)",
+      "family": "Turkic"
+    }
+  }
+}
