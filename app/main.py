@@ -7,7 +7,7 @@ model metadata introspection, and static frontend serving.
 import os
 import json
 from typing import List, Optional
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, FileResponse
@@ -103,17 +103,24 @@ class HealthResponse(BaseModel):
 # ---------------------------------------------------------
 
 @app.get("/", summary="API Information")
-async def root():
+async def root(request: Request):
     """
-    Returns basic API information, supported endpoints, and model capabilities.
+    Returns the interactive web dashboard for browser requests (Accept: text/html),
+    or basic API information and documentation links for API clients.
     """
+    accept = request.headers.get("accept", "")
+    frontend_index = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "index.html")
+    if "text/html" in accept and os.path.exists(frontend_index) and not request.headers.get("x-requested-with"):
+        return FileResponse(frontend_index)
+
     return {
         "name": "Language Detection System API",
         "version": "1.0.0",
         "description": "NLP and Machine Learning system for automated language identification.",
         "algorithm": "Character-Level TF-IDF (n-grams 2-5) + Logistic Regression",
         "endpoints": {
-            "GET /": "API overview and documentation links",
+            "GET /": "Web application dashboard (browser) or API overview (JSON)",
+            "GET /app": "Interactive Language Detection Web Dashboard",
             "GET /health": "System health and model readiness check",
             "POST /predict": "Predict language of input text with confidence and top alternatives",
             "GET /languages": "List of all supported languages with script and ISO metadata",
@@ -234,8 +241,23 @@ if os.path.isdir(frontend_dir):
     app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
 
     @app.get("/app", include_in_schema=False)
+    @app.get("/app/", include_in_schema=False)
     async def serve_frontend():
         index_file = os.path.join(frontend_dir, "index.html")
         if os.path.exists(index_file):
             return FileResponse(index_file)
         return JSONResponse({"message": "Frontend index.html not found"})
+
+    @app.get("/style.css", include_in_schema=False)
+    async def serve_style():
+        css_file = os.path.join(frontend_dir, "style.css")
+        if os.path.exists(css_file):
+            return FileResponse(css_file, media_type="text/css")
+        return JSONResponse({"message": "style.css not found"}, status_code=404)
+
+    @app.get("/script.js", include_in_schema=False)
+    async def serve_script():
+        js_file = os.path.join(frontend_dir, "script.js")
+        if os.path.exists(js_file):
+            return FileResponse(js_file, media_type="application/javascript")
+        return JSONResponse({"message": "script.js not found"}, status_code=404)

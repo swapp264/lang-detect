@@ -342,6 +342,39 @@ Returns all 15 supported languages, flags, ISO codes, and writing systems.
 
 ---
 
+## Deployment on Render (Step-by-Step)
+
+You can deploy this project to [Render](https://render.com) for free either using the Web Service UI or the included `render.yaml` blueprint.
+
+### Method 1: Python FastAPI Web Service (Recommended)
+
+1. Sign up or log into [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** → **Web Service**.
+3. Connect your GitHub repository (`language-detector`).
+4. Configure the service settings:
+   - **Name**: `language-detector-api`
+   - **Language / Runtime**: `Python 3`
+   - **Region**: Choose closest to you (e.g. `Oregon (US West)` or `Frankfurt (EU)`)
+   - **Branch**: `main`
+   - **Build Command**:
+     ```bash
+     pip install -r requirements.txt && python -m src.train
+     ```
+   - **Start Command**:
+     ```bash
+     uvicorn app.main:app --host 0.0.0.0 --port $PORT
+     ```
+   - **Instance Type**: `Free`
+5. Under **Environment Variables**, add:
+   - `PYTHON_VERSION`: `3.10.12`
+6. Click **Deploy Web Service**.
+7. Once deployment finishes, your API and built-in UI will be live at:
+   - Web App UI: `https://your-service.onrender.com/app`
+   - Interactive Swagger Docs: `https://your-service.onrender.com/docs`
+   - Health Probe: `https://your-service.onrender.com/health`
+
+---
+
 ## Limitations
 
 1. **Very Short Text**: Inputs with fewer than 2–3 characters (such as single words or abbreviations like "hi", "in") may have ambiguous n-gram distributions shared across multiple Germanic or Romance languages.
